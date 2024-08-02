@@ -320,7 +320,7 @@ docker_command=(
   run
   -d
   --name "${CONTAINER_NAME}" --restart always --net host
-  --dns 1.1.1.1
+  --dns 198.153.192.60
   # Used by Watchtower to know which containers to monitor.
   --label 'com.centurylinklabs.watchtower.enable=true'
   
@@ -369,7 +369,7 @@ function start_watchtower() {
   # Set watchtower to refresh every 30 seconds if a custom SB_IMAGE is used (for
   # testing).  Otherwise refresh every hour.
   local -ir WATCHTOWER_REFRESH_SECONDS="${WATCHTOWER_REFRESH_SECONDS:-3600}"
-  local -ar docker_watchtower_flags=(--name watchtower --dns 1.1.1.1 --log-driver local --restart always \
+  local -ar docker_watchtower_flags=(--name watchtower --dns 198.153.192.60 --log-driver local --restart always \
       -v /var/run/docker.sock:/var/run/docker.sock)
   # By itself, local messes up the return code.
   local STDERR_OUTPUT
